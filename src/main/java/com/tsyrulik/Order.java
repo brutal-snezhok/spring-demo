@@ -7,6 +7,10 @@ public class Order {
         this.orderNumber = orderNumber;
     }
 
+    public Integer getOrderNumber() {
+        return orderNumber;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
