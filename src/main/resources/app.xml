@@ -5,9 +5,12 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
     <!-- bean definitions here -->
-    <bean class="com.tsyrulik.OrderService">
-        <property name="orderValidator" ref="orderValidator"/>
+    <bean class="com.tsyrulik.OrderService" scope="thread">
+        <constructor-arg ref="orderValidator1"/>
     </bean>
 
-    <bean id="orderValidator" class="com.tsyrulik.OrderValidator"/>
+    <bean id="orderValidator1" class="com.tsyrulik.OrderValidator"/>
+
+    <bean id="orderValidator2" class="com.tsyrulik.OrderValidator"/>
+
 </beans>

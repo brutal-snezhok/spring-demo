@@ -1,7 +1,7 @@
 package com.tsyrulik;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.SimpleThreadScope;
 
 public class App {
     public static void main(String[] args) {
@@ -12,9 +12,12 @@ public class App {
 //        service.createOrder(new Order(123));
 
 
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("app.xml");
-        OrderService orderService = applicationContext.getBean(OrderService.class);
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("app.xml");
+        applicationContext.getBeanFactory().registerScope("thread", new SimpleThreadScope());
 
-        orderService.createOrder(new Order(123));
+        OrderService orderService1 = applicationContext.getBean(OrderService.class);
+//        OrderService orderService2 = applicationContext.getBean(OrderService.class);
+
+       // orderService.createOrder(new Order(123));
     }
 }

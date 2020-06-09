@@ -1,9 +1,10 @@
 package com.tsyrulik;
 
 public class OrderService {
-    private OrderValidator orderValidator;
+    private final OrderValidator orderValidator;
 
-    public OrderService() {
+    public OrderService(OrderValidator orderValidator) {
+        this.orderValidator = orderValidator;
         System.out.println("orderService created");
     }
 
@@ -14,9 +15,5 @@ public class OrderService {
         } else {
             System.out.println("Order" + order + " is not valid");
         }
-    }
-
-    public void setOrderValidator(OrderValidator orderValidator) {
-        this.orderValidator = orderValidator;
     }
 }
