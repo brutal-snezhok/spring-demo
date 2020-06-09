@@ -10,7 +10,7 @@
     </bean>
 
     <bean id="orderValidator" class="com.tsyrulik.OrderValidator">
-
+        <constructor-arg ref="ntsv"/>
     </bean>
 
     <bean id="ntsv" class="com.tsyrulik.NonThreadSafeValidator" scope="prototype"/>
