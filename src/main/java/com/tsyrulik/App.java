@@ -11,12 +11,15 @@ public class App {
 //
 //        service.createOrder(new Order(123));
 
-
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("app.xml");
         applicationContext.getBeanFactory().registerScope("thread", new SimpleThreadScope());
 
         OrderService orderService1 = applicationContext.getBean(OrderService.class);
-//        OrderService orderService2 = applicationContext.getBean(OrderService.class);
+        OrderService orderService2 = applicationContext.getBean(OrderService.class);
+
+        new Thread(() -> {
+            applicationContext.getBean(OrderService.class);
+        }).start();
 
        // orderService.createOrder(new Order(123));
     }
