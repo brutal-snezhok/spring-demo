@@ -6,11 +6,11 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
     <!-- bean definitions here -->
     <bean class="com.tsyrulik.OrderService" scope="thread">
-        <constructor-arg ref="orderValidator1"/>
+        <constructor-arg ref="orderValidator"/>
     </bean>
 
-    <bean id="orderValidator1" class="com.tsyrulik.OrderValidator">
-        <constructor-arg ref="ntsv"/>
+    <bean id="orderValidator" class="com.tsyrulik.OrderValidator">
+
     </bean>
 
     <bean id="ntsv" class="com.tsyrulik.NonThreadSafeValidator" scope="prototype"/>

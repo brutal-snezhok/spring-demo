@@ -1,17 +1,17 @@
 package com.tsyrulik;
 
-import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class NonThreadSafeValidator {
-    private UUID uuid;
-
-    public NonThreadSafeValidator() {
-        uuid = UUID.randomUUID();
-    }
+    AtomicInteger atomicInteger = new AtomicInteger(0);
 
     public boolean isValid(Order order) {
-        System.out.println(uuid + ": isValid called");
+        int i = atomicInteger.incrementAndGet();
+
+        if(i == 2) {
+            throw new IllegalStateException("nonThreadSafeValidator is called twice");
+        }
+
         return true;
     }
-
 }
