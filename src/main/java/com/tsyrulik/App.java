@@ -1,26 +1,17 @@
 package com.tsyrulik;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.SimpleThreadScope;
 
 public class App {
     public static void main(String[] args) {
-//        OrderValidator validator = new OrderValidator();
-//        validator.setMinOrderNumber(122);
-//        OrderService service = new OrderService(validator);
-//
-//        service.createOrder(new Order(123));
-
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("app.xml");
+        GenericApplicationContext applicationContext = new GenericApplicationContext();
+        new XmlBeanDefinitionReader(applicationContext).loadBeanDefinitions("app.xml");
         applicationContext.getBeanFactory().registerScope("thread", new SimpleThreadScope());
+        applicationContext.refresh();
 
-        OrderService orderService1 = applicationContext.getBean(OrderService.class);
-        OrderService orderService2 = applicationContext.getBean(OrderService.class);
-
-        new Thread(() -> {
-            applicationContext.getBean(OrderService.class);
-        }).start();
-
-       // orderService.createOrder(new Order(123));
+        OrderService orderService = applicationContext.getBean(OrderService.class);
+        orderService.createOrder(new Order(456));
     }
 }

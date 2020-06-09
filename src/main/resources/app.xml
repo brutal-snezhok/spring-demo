@@ -9,8 +9,10 @@
         <constructor-arg ref="orderValidator1"/>
     </bean>
 
-    <bean id="orderValidator1" class="com.tsyrulik.OrderValidator"/>
+    <bean id="orderValidator1" class="com.tsyrulik.OrderValidator">
+        <constructor-arg ref="ntsv"/>
+    </bean>
 
-    <bean id="orderValidator2" class="com.tsyrulik.OrderValidator"/>
+    <bean id="ntsv" class="com.tsyrulik.NonThreadSafeValidator" scope="prototype"/>
 
 </beans>
