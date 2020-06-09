@@ -1,11 +1,13 @@
 package com.tsyrulik;
 
+import org.springframework.beans.factory.ObjectFactory;
+
 public class OrderValidator {
     private int minOrderNumber = 1;
 
-    private final NonThreadSafeValidator nonThreadSafeValidator;
+    private final ObjectFactory<NonThreadSafeValidator> nonThreadSafeValidator;
 
-    public OrderValidator(NonThreadSafeValidator nonThreadSafeValidator) {
+    public OrderValidator(ObjectFactory<NonThreadSafeValidator> nonThreadSafeValidator) {
         this.nonThreadSafeValidator = nonThreadSafeValidator;
     }
 
@@ -13,7 +15,7 @@ public class OrderValidator {
         if(order.getOrderNumber() < minOrderNumber) {
             return true;
         }
-        nonThreadSafeValidator.isValid(order);
+        nonThreadSafeValidator.getObject().isValid(order);
 
         return false;
     }
