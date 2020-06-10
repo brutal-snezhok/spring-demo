@@ -1,7 +1,9 @@
 package com.tsyrulik;
 
+import java.util.List;
+
 public class OrderService {
-    private final OrderValidator orderValidator;
+    private final List<OrderValidator> orderValidators;
 
     public void init() {
         System.out.println("OrderService.init");
@@ -11,14 +13,14 @@ public class OrderService {
         System.out.println("OrderService.destroy");
     }
 
-    public OrderService(OrderValidator orderValidator) {
-        this.orderValidator = orderValidator;
+    public OrderService(List<OrderValidator> orderValidators) {
+        this.orderValidators = orderValidators;
         System.out.println("orderService created");
     }
 
     public void createOrder(Order order) {
 
-        if(orderValidator.isValid(order)) {
+        if(orderValidators.stream().allMatch(ov -> ov.isValid(order))) {
             System.out.println("Order" + order + " is created");
         } else {
             System.out.println("Order" + order + " is not valid");

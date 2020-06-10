@@ -5,10 +5,12 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
     <!-- bean definitions here -->
-    <bean class="com.tsyrulik.OrderService" init-method="init" destroy-method="destroy">
-        <constructor-arg ref="orderValidator"/>
+    <bean class="com.tsyrulik.OrderService" init-method="init" destroy-method="destroy" autowire="constructor">
+<!--        <constructor-arg ref="orderValidator"/>-->
     </bean>
 
-    <bean id="orderValidator" class="com.tsyrulik.OrderValidator" autowire="constructor"/>
+    <bean id="orderValidator1" class="com.tsyrulik.OrderValidatorBasic" autowire="constructor"/>
+    <bean id="orderValidator2" class="com.tsyrulik.OrderValidatorExtended" autowire="constructor"/>
+
     <bean id="ntsv" class="com.tsyrulik.NonThreadSafeValidator" scope="prototype"/>
 </beans>
