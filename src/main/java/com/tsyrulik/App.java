@@ -14,5 +14,7 @@ public class App {
         OrderService orderService = applicationContext.getBean(OrderService.class);
         orderService.createOrder(new Order(456));
         orderService.createOrder(new Order(457));
+
+        applicationContext.close();
     }
 }
