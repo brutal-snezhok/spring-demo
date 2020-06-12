@@ -8,9 +8,11 @@ import javax.annotation.PreDestroy;
 public class OrderService {
     private final OrderValidator orderValidator;
 
+    private String prop;
+
     @PostConstruct
     public void init() {
-        System.out.println("OrderService.init");
+        System.out.println("OrderService.init " + prop);
     }
 
     @PreDestroy
@@ -29,5 +31,9 @@ public class OrderService {
         } else {
             System.out.println("Order" + order + " is not valid");
         }
+    }
+
+    public void setProp(String prop) {
+        this.prop = prop;
     }
 }

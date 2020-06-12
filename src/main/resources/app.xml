@@ -9,7 +9,7 @@
     <context:annotation-config/>
 
     <bean id="orderService" class="com.tsyrulik.OrderService">
-<!--        <constructor-arg ref="orderValidator"/>-->
+        <property name="prop" value="${prop1}"/>
     </bean>
 
     <bean id="orderValidator1" class="com.tsyrulik.OrderValidatorBasic"/>
@@ -19,4 +19,7 @@
 
     <bean class="com.tsyrulik.TraceBeanPostProcessor"/>
     <bean class="com.tsyrulik.PrototypeByDefaultBeanFactoryPostProcessor"/>
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="app.properties"/>
+    </bean>
 </beans>
