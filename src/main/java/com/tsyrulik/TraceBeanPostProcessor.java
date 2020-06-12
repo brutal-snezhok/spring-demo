@@ -3,12 +3,14 @@ package com.tsyrulik;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.Ordered;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Proxy;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+@Component
 public class TraceBeanPostProcessor implements BeanPostProcessor, Ordered {
     Set<String> beansToProcess = new HashSet<>();
 

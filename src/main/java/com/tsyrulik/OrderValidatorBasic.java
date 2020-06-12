@@ -1,11 +1,13 @@
 package com.tsyrulik;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import javax.inject.Provider;
 
 @Trace
 @Qualifier("main")
+@Component
 public class OrderValidatorBasic implements OrderValidator {
     private int minOrderNumber = 1;
 

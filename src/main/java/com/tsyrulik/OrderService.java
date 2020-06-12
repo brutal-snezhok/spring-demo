@@ -1,10 +1,12 @@
 package com.tsyrulik;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+@Service
 public class OrderService {
     private final OrderValidator orderValidator;
 
