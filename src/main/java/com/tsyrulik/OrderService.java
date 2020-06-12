@@ -1,14 +1,18 @@
 package com.tsyrulik;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 
 public class OrderService {
     private final List<OrderValidator> orderValidators;
 
+    @PostConstruct
     public void init() {
         System.out.println("OrderService.init");
     }
 
+    @PreDestroy
     public void destroy() {
         System.out.println("OrderService.destroy");
     }
