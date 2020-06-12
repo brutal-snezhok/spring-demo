@@ -11,10 +11,12 @@ public class App {
         applicationContext.getBeanFactory().registerScope("thread", new SimpleThreadScope());
         applicationContext.refresh();
 
-        OrderService orderService = applicationContext.getBean(OrderService.class);
-        orderService.createOrder(new Order(456));
-        orderService.createOrder(new Order(457));
-
-        applicationContext.close();
+        applicationContext.getBean(OrderService.class);
+        applicationContext.getBean(OrderService.class);
+        applicationContext.getBean(OrderService.class);
+//        orderService.createOrder(new Order(456));
+//        orderService.createOrder(new Order(457));
+//
+//        applicationContext.close();
     }
 }
