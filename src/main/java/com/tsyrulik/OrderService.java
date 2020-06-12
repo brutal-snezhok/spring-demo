@@ -1,11 +1,12 @@
 package com.tsyrulik;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.util.List;
 
 public class OrderService {
-    private final List<OrderValidator> orderValidators;
+    private final OrderValidator orderValidator;
 
     @PostConstruct
     public void init() {
@@ -17,14 +18,13 @@ public class OrderService {
         System.out.println("OrderService.destroy");
     }
 
-    public OrderService(List<OrderValidator> orderValidators) {
-        this.orderValidators = orderValidators;
+    public OrderService(@Qualifier("main") OrderValidator orderValidator) {
+        this.orderValidator = orderValidator;
         System.out.println("orderService created");
     }
 
     public void createOrder(Order order) {
-
-        if(orderValidators.stream().allMatch(ov -> ov.isValid(order))) {
+        if(orderValidator.isValid(order)) {
             System.out.println("Order" + order + " is created");
         } else {
             System.out.println("Order" + order + " is not valid");
