@@ -2,13 +2,14 @@ package com.tsyrulik;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.core.Ordered;
 
 import java.lang.reflect.Proxy;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class TraceBeanPostProcessor implements BeanPostProcessor {
+public class TraceBeanPostProcessor implements BeanPostProcessor, Ordered {
     Set<String> beansToProcess = new HashSet<>();
 
     @Override
@@ -30,5 +31,10 @@ public class TraceBeanPostProcessor implements BeanPostProcessor {
         }
 
         return bean;
+    }
+
+    @Override
+    public int getOrder() {
+        return Ordered.HIGHEST_PRECEDENCE;
     }
 }
