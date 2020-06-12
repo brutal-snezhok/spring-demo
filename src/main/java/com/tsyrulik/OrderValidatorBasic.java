@@ -2,6 +2,7 @@ package com.tsyrulik;
 
 import javax.inject.Provider;
 
+@Trace
 public class OrderValidatorBasic implements OrderValidator {
     private int minOrderNumber = 1;
 

@@ -13,4 +13,6 @@
     <bean id="orderValidator2" class="com.tsyrulik.OrderValidatorExtended" autowire="constructor"/>
 
     <bean id="ntsv" class="com.tsyrulik.NonThreadSafeValidator" scope="prototype"/>
+
+    <bean class="com.tsyrulik.TraceBeanPostProcessor"/>
 </beans>
