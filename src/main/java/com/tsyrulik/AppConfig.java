@@ -8,11 +8,6 @@ import org.springframework.context.annotation.Primary;
 public class AppConfig {
 
     @Bean
-    public OrderService orderService() {
-        return new OrderService(validator1());
-    }
-
-    @Bean
     @Primary
     public OrderValidator validator1() {
         System.out.println("Validator1 is called");
