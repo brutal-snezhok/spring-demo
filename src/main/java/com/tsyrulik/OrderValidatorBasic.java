@@ -1,9 +1,6 @@
 package com.tsyrulik;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-
 @Trace
-@Qualifier("main")
 public class OrderValidatorBasic implements OrderValidator {
     private int minOrderNumber = 1;
 
