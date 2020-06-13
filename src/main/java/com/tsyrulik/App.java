@@ -9,8 +9,8 @@ public class App {
         applicationContext.refresh();
 
         applicationContext.getBean(OrderService.class);
-        applicationContext.getBean(OrderService.class);
-        applicationContext.getBean(OrderService.class);
+//        applicationContext.getBean(OrderService.class);
+//        applicationContext.getBean(OrderService.class);
 //        orderService.createOrder(new Order(456));
 //        orderService.createOrder(new Order(457));
 //
