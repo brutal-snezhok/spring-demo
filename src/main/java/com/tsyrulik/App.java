@@ -4,14 +4,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class App {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
+        applicationContext.getEnvironment().addActiveProfile("test");
+        applicationContext.scan("com.tsyrulik");
 
+        applicationContext.register(AppConfig.class);
+        applicationContext.refresh();
         applicationContext.getBean(OrderService.class);
-//        applicationContext.getBean(OrderService.class);
-//        applicationContext.getBean(OrderService.class);
-//        orderService.createOrder(new Order(456));
-//        orderService.createOrder(new Order(457));
-//
-//        applicationContext.close();
+
     }
 }
