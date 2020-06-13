@@ -1,30 +1,24 @@
 package com.tsyrulik;
 
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-
-import javax.inject.Provider;
 
 @Trace
 @Qualifier("main")
-@Component
 public class OrderValidatorBasic implements OrderValidator {
     private int minOrderNumber = 1;
 
-    private final Provider<NonThreadSafeValidator> nonThreadSafeValidator;
+    //private final Provider<NonThreadSafeValidator> nonThreadSafeValidator;
 
-    public OrderValidatorBasic(Provider<NonThreadSafeValidator> nonThreadSafeValidator) {
-        this.nonThreadSafeValidator = nonThreadSafeValidator;
+    public OrderValidatorBasic() {
     }
 
     @Override
     public boolean isValid(Order order) {
         if(order.getOrderNumber() < minOrderNumber) {
-            return true;
+            return false;
         }
-        nonThreadSafeValidator.get().isValid(order);
 
-        return false;
+        return true;
     }
 
     public void setMinOrderNumber(int minOrderNumber) {
